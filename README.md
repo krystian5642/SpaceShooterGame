@@ -1,6 +1,6 @@
 # SpaceShooterGame
-About the game and how to play in the game
-
+About the game and how to play in the game<br>
+This game was created for learning purpose only<br>
  <ol>
     <li>It's a simply space shooter where you have to shoot all enemies down to win the game.</li>
     <li>The number of enemies is chosen at random during the game starts</li>
