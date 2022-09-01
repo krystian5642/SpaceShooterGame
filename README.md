@@ -13,10 +13,10 @@ About the game and how to play in the game
     
  </ol> 
 
-Key assignment
-W - forward
-Space - acceleration
-A - rotate left
-D - rotate right
-P - shoot
-R - restart game
+Key assignment<br>
+W - forward<br>
+Space - acceleration<br>
+A - rotate left<br>
+D - rotate right<br>
+P - shoot<br>
+R - restart game<br>
