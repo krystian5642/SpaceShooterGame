@@ -1,7 +1,7 @@
 #ifndef EXPLOSION_H
 #define EXPLOSION_H
 
-#include "entity.h"
+#include "Entity.h"
 #include "Player.h"
 #include "Enemy.h"
 
