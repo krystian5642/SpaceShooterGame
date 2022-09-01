@@ -168,6 +168,7 @@
     <ClInclude Include="Explosion.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameBar.h" />
+    <ClInclude Include="Libraries.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
