@@ -24,17 +24,17 @@ public:
 	virtual ~Bullet();
 
 	//getters and setters
-	const float& getMaxLifeTime() const;
-	void setMaxLifeTime(const float& newMaxLifeTime);
+	float getMaxLifeTime() const;
+	void setMaxLifeTime(float newMaxLifeTime);
 
-	const float& getSpeed() const;
-	void setSpeed(const float& newSpeed);
+	float getSpeed() const;
+	void setSpeed(float newSpeed);
 
 	const sf::Vector2f& getDirection() const;
 	void setDirection(const sf::Vector2f& newDirection);
 
 	//functions
-	void updateBullet();
+	void updateBullet(long double dt);
 	bool isEndBulletLife();
 };
 

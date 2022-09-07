@@ -30,19 +30,19 @@ public:
 	virtual ~Entity();
 
 	//getters and setters
-	const std::string& getEntityName() const;
-	void setEntityName(const std::string& newEntityName);
+	std::string getEntityName() const;
+	void setEntityName(std::string newEntityName);
 
-	const size_t& getTextureNumber() const;
-	void setTextureNumber(const size_t& newTextureNumber);
+	size_t getTextureNumber() const;
+	void setTextureNumber(const size_t newTextureNumber);
 
 	const sf::Vector2f& getScale() const;
 	void setScale(const sf::Vector2f& newScale);
 
-	const size_t& getTextureIndex() const;
+    size_t getTextureIndex() const;
 
 	//pure virtual functions
-	virtual void updateEntity() = 0;
+	virtual void updateEntity(long double dt) = 0;
 };
 
 #endif // !ENTITY_H

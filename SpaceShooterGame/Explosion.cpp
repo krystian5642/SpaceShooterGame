@@ -36,7 +36,7 @@ Explosion::~Explosion()
 {
 }
 
-void Explosion::updateEntity()
+void Explosion::updateEntity(long double dt)
 {
     setTexture(entityTextures[textureIndex].get(), true);
     textureIndex++;

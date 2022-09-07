@@ -48,116 +48,116 @@ Ship::~Ship()
 {
 }
 
-const float& Ship::getSpeed() const
+float Ship::getSpeed() const
 {
     return speed;
 }
 
-void Ship::setSpeed(const float& newSpeed)
+void Ship::setSpeed(float newSpeed)
 {
     if (newSpeed < 0)
     {
         throw std::logic_error("speed could not be less than zero");
     }
-    this->speed = newSpeed;
+    speed = newSpeed;
 }
 
-const float& Ship::getAcceleration() const
+float Ship::getAcceleration() const
 {
     return acceleration;
 }
 
-void Ship::setAcceleration(const float& newAcceleration)
+void Ship::setAcceleration(float newAcceleration)
 {
     if (newAcceleration < 0)
     {
         throw std::logic_error("acceleration could not be less than zero");
     }
-    this->acceleration = newAcceleration;
+    acceleration = newAcceleration;
 }
 
-const float& Ship::getRotateAngle() const
+float Ship::getRotateAngle() const
 {
     return rotateAngle;
 }
 
-void Ship::setRotateAngle(const float& newRotateAngle)
+void Ship::setRotateAngle(float newRotateAngle)
 {
     if (newRotateAngle < 0)
     {
         throw std::logic_error("rotateAngle could not be less than zero");
     }
-    this->rotateAngle = newRotateAngle;
+    rotateAngle = newRotateAngle;
 }
 
-const float& Ship::getReloadingTime() const
+float Ship::getReloadingTime() const
 {
     return reloadingTime;
 }
 
-void Ship::setReloadingTime(const float& newReloadingTime)
+void Ship::setReloadingTime(float newReloadingTime)
 {
     if (newReloadingTime <= 0)
     {
         throw std::logic_error("reloadingTime could not be less or equal zero");
     }
-    this->reloadingTime = newReloadingTime;
+    reloadingTime = newReloadingTime;
 }
 
-const int& Ship::getMaxHP() const
+int Ship::getMaxHP() const
 {
     return maxHP;
 }
 
-void Ship::setMaxHP(const int& newMaxHP)
+void Ship::setMaxHP(int newMaxHP)
 {
     if (newMaxHP <= 0)
     {
         throw std::logic_error("maxHP could not be less than zero");
     }
-    this->maxHP = newMaxHP;
+    maxHP = newMaxHP;
 }
 
-const int& Ship::getMaxEnergy() const
+int Ship::getMaxEnergy() const
 {
     return maxEnergy;
 }
 
-void Ship::setMaxEnergy(const int& newMaxEnergy)
+void Ship::setMaxEnergy(int newMaxEnergy)
 {
     if (newMaxEnergy < 0)
     {
         throw std::logic_error("maxEnergy could not be less than zero");
     }
-    this->maxEnergy = newMaxEnergy;
+    maxEnergy = newMaxEnergy;
 }
 
-const int& Ship::getCurrentHP() const
+int Ship::getCurrentHP() const
 {
     return currentHP;
 }
 
-void Ship::setCurrentHP(const int& newCurrentHP)
+void Ship::setCurrentHP(int newCurrentHP)
 {
     if (newCurrentHP < 0)
     {
         throw std::logic_error("currentHP could not be less than zero");
     }
-    this->currentHP = newCurrentHP;
+    currentHP = newCurrentHP;
 }
 
-const int& Ship::getCurrentEnergy() const
+int Ship::getCurrentEnergy() const
 {
     return currentEnergy;
 }
 
-void Ship::setCurrentEnergy(const int& newCurrentEnergy)
+void Ship::setCurrentEnergy(int newCurrentEnergy)
 {
     if (newCurrentEnergy < 0)
     {
         throw std::logic_error("currentEnergy could not be less than zero");
     }
-    this->currentEnergy = newCurrentEnergy;
+    currentEnergy = newCurrentEnergy;
 }
 
 const sf::Color& Ship::getBulletColor() const
@@ -167,48 +167,48 @@ const sf::Color& Ship::getBulletColor() const
 
 void Ship::setBulletColor(const sf::Color& newBulletColor)
 {
-    this->bulletColor = newBulletColor;
+    bulletColor = newBulletColor;
 }
 
-const float& Ship::getBulletRadius() const
+float Ship::getBulletRadius() const
 {
     return bulletRadius;
 }
 
-void Ship::setBulletRadius(const float& newBulletRadius)
+void Ship::setBulletRadius(float newBulletRadius)
 {
     if (newBulletRadius <= 0)
     {
         throw std::logic_error("bulletRadius could not be less or equal zero");
     }
-    this->bulletRadius = bulletRadius;
+    bulletRadius = newBulletRadius;
 }
 
-const int& Ship::getScore() const
+int Ship::getScore() const
 {
     return score;
 }
 
-void Ship::setScore(const int& newScore)
+void Ship::setScore(int newScore)
 {
     if (newScore < 0)
     {
         throw std::logic_error("score could not be less or equal zero");
     }
-    this->score = newScore;
+    score = newScore;
 }
 
 void Ship::shoot(const sf::Vector2f& direction)
 {
     if (shipClockReloading.getElapsedTime().asSeconds() > reloadingTime)
     {
-        Bullet bullet(getPosition(), direction, speed * 3, bulletRadius, bulletColor);
+        Bullet bullet(getPosition(), direction, speed * 1.8, bulletRadius, bulletColor);
         bullets.push_back(bullet);
         shipClockReloading.restart();
     }
 }
 
-bool Ship::shipExplode(const int& damage)
+bool Ship::shipExplode(int damage)
 {
     currentHP -= damage;
     if (currentHP <= 0) return true;

@@ -8,9 +8,9 @@ class Ship : public Entity
 {
 protected:
 	//variables
-	float speed = 5.f;
+	float speed = 300.f;
 	float acceleration = 2.f;
-	float rotateAngle = 5.f;
+	float rotateAngle = 200.f;
 	float reloadingTime = 1.f;
 
 	int maxHP = 100;
@@ -34,58 +34,58 @@ public:
 		float xScale = 1.f,
 		float yScale = 1.f,
 		size_t textureNumber = 1,
-		float speed = 5.f,
+		float speed = 300.f,
 		float acceleration = 2.f,
-		float rotateAngle = 5.f,
+		float rotateAngle = 200.f,
 		int maxHP = 100,
 		int maxEnergy = 100);
 	Ship(const Ship& ship);
 	virtual ~Ship();
 
 	//getters and setters
-	const float& getSpeed() const;
-	void setSpeed(const float& newSpeed);
+	float getSpeed() const;
+	void setSpeed(float newSpeed);
 
-	const float& getAcceleration() const;
-	void setAcceleration(const float& newAcceleration);
+	float getAcceleration() const;
+	void setAcceleration(float newAcceleration);
 
-	const float& getRotateAngle() const;
-	void setRotateAngle(const float& newRotateAngle);
+	float getRotateAngle() const;
+	void setRotateAngle(float newRotateAngle);
 
-	const float& getReloadingTime() const;
-	void setReloadingTime(const float& newReloadingTime);
+	float getReloadingTime() const;
+	void setReloadingTime(float newReloadingTime);
 
-	const int& getMaxHP() const;
-	void setMaxHP(const int& newMaxHP);
+	int getMaxHP() const;
+	void setMaxHP(const int newMaxHP);
 
-	const int& getMaxEnergy() const;
-	void setMaxEnergy(const int& newMaxEnergy);
+	int getMaxEnergy() const;
+	void setMaxEnergy(const int newMaxEnergy);
 
-	const int& getCurrentHP() const;
-	void setCurrentHP(const int& newCurrentHP);
+	int getCurrentHP() const;
+	void setCurrentHP(int newCurrentHP);
 
-	const int& getCurrentEnergy() const;
-	void setCurrentEnergy(const int& newCurrentEnergy);
+	int getCurrentEnergy() const;
+	void setCurrentEnergy(int newCurrentEnergy);
 
-	const int& getScore() const;
-	void setScore(const int& newScore);
+	int getScore() const;
+	void setScore(int newScore);
 
 	const sf::Color& getBulletColor() const;
 	void setBulletColor(const sf::Color& newBulletColor);
 
-	const float& getBulletRadius() const;
-	void setBulletRadius(const float& newBulletRadius);
+	float getBulletRadius() const;
+	void setBulletRadius(float newBulletRadius);
 
 	//It's public due to we have to modify this conteiner
 	std::vector<Bullet> bullets;
 
 	//functions
 	void shoot(const sf::Vector2f& direction);
-	bool shipExplode(const int& damage);
+	bool shipExplode(int damage);
 	bool checkPosition();
 
 	//pure virtual functions
-	virtual void updateEntity() = 0;
+	virtual void updateEntity(long double dt) = 0;
 };
 
 #endif // !SHIPS_H

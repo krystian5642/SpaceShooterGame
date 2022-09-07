@@ -23,12 +23,12 @@ public:
 	const sf::Vector2f& getRelativePosition() const;
 	void setRelativePosition(const sf::Vector2f& newRelativePosition);
 
-	const float& getStartXSize() const;
-	void setStartXSize(const float& newStartXSize);
+	float getStartXSize() const;
+	void setStartXSize(float newStartXSize);
 
 	//functions
 	void setPosition(const sf::Vector2f& position);
-	void updateBar(const int& currentState, const int& maxState, const sf::RenderWindow* window, const sf::View& currentView);
+	void updateBar(int currentState, int maxState, const sf::RenderWindow* window, const sf::View& currentView);
 	void drawBar(sf::RenderWindow* window);
 };
 

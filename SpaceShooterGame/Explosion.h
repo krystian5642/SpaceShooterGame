@@ -21,7 +21,7 @@ public:
 	virtual ~Explosion();
 
 	//virtual functions
-	virtual void updateEntity();
+	virtual void updateEntity(long double dt);
 };
 
 #endif // !EXPLOSION_H

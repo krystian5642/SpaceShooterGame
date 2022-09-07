@@ -25,28 +25,28 @@ Entity::~Entity()
 {
 }
 
-const std::string& Entity::getEntityName() const
+std::string Entity::getEntityName() const
 {
 	return entityName;
 }
 
-void Entity::setEntityName(const std::string& newEntityName)
+void Entity::setEntityName(std::string newEntityName)
 {
-	this->entityName = newEntityName;
+	entityName = newEntityName;
 }
 
-const size_t& Entity::getTextureNumber() const
+size_t Entity::getTextureNumber() const
 {
 	return textureNumber;
 }
 
-void Entity::setTextureNumber(const size_t& newTextureNumber)
+void Entity::setTextureNumber(size_t newTextureNumber)
 {
 	if (newTextureNumber <= 0)
 	{
 		throw std::logic_error("textureNumber cannot be less or equal zero");
 	}
-	this->textureNumber = newTextureNumber;
+	textureNumber = newTextureNumber;
 }
 
 const sf::Vector2f& Entity::getScale() const
@@ -60,10 +60,10 @@ void Entity::setScale(const sf::Vector2f& newScale)
 	{
 		throw std::logic_error("scale cannot be less or equal zero");
 	}
-	this->scale = newScale;
+	scale = newScale;
 }
 
-const size_t& Entity::getTextureIndex() const
+size_t Entity::getTextureIndex() const
 {
 	return textureIndex;
 }

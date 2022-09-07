@@ -23,21 +23,21 @@ const sf::Vector2f& GameBar::getRelativePosition() const
 
 void GameBar::setRelativePosition(const sf::Vector2f& newRelativePosition)
 {
-	this->relativePosition = newRelativePosition;
+	relativePosition = newRelativePosition;
 }
 
-const float& GameBar::getStartXSize() const
+float GameBar::getStartXSize() const
 {
 	return startXSize;
 }
 
-void GameBar::setStartXSize(const float& newStartXSize)
+void GameBar::setStartXSize(float newStartXSize)
 {
 	if (newStartXSize <= 0)
 	{
 		throw std::logic_error("startXSize cannot be less or equal zero");
 	}
-	this->startXSize = newStartXSize;
+	startXSize = newStartXSize;
 }
 
 void GameBar::setPosition(const sf::Vector2f& position)
@@ -46,7 +46,7 @@ void GameBar::setPosition(const sf::Vector2f& position)
 	sf::Text::setPosition(position);
 }
 
-void GameBar::updateBar(const int& currentState, const int& maxState, const sf::RenderWindow* window, const sf::View& currentView)
+void GameBar::updateBar(int currentState, int maxState, const sf::RenderWindow* window, const sf::View& currentView)
 {
 	std::string previousState = getString();
 	if (currentState != std::stod(previousState))

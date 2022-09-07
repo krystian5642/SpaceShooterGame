@@ -26,7 +26,7 @@ Player::~Player()
 {
 }
 
-void Player::updateEntity()
+void Player::updateEntity(long double dt)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
@@ -38,21 +38,21 @@ void Player::updateEntity()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && currentEnergy > 0)
         {
             currentEnergy--;
-            currentSpeedVector = sf::Vector2f(acceleration * speed * cos(angleInRad), acceleration * speed * sin(angleInRad));
+            currentSpeedVector = sf::Vector2f(acceleration * speed * cos(angleInRad) * dt, acceleration * speed * sin(angleInRad) * dt);
         }
         else
         {
-            currentSpeedVector = sf::Vector2f(speed * cos(angleInRad), speed * sin(angleInRad));
+            currentSpeedVector = sf::Vector2f(speed * cos(angleInRad) * dt, speed * sin(angleInRad) * dt);
         }
         move(currentSpeedVector);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        rotate(-rotateAngle);
+        rotate(-rotateAngle * dt);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        rotate(rotateAngle);
+        rotate(rotateAngle*dt);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
     {

@@ -20,8 +20,8 @@ Enemy::Enemy(std::string objectName, float xScale, float yScale, size_t textureN
 
 Enemy::Enemy(const Enemy& enemy) : Ship(enemy)
 {
-    setRotateAngle(rand() % (int)15 + 5);
-    setSpeed(rand() % (int)5 + 1);
+    setRotateAngle(rand() % (int)150+100);
+    setSpeed(rand() % (int)250 +200);
     setReloadingTime(enemy.reloadingTime);
 }
 
@@ -29,7 +29,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::updateEntity()
+void Enemy::updateEntity(long double dt)
 {
     double PI = 3.141592653589;
     double angle = getRotation();
@@ -38,11 +38,11 @@ void Enemy::updateEntity()
 
     if (shipClockMove.getElapsedTime().asSeconds() < 0.5f)
     {
-        rotate(rotateAngle);
+        rotate(rotateAngle * dt);
     }
     else if (shipClockMove.getElapsedTime().asSeconds() < 3)
     {
-        move(sf::Vector2f(speed * direction.x, speed * direction.y));
+        move(sf::Vector2f(speed * direction.x * dt, speed * direction.y*dt));
         if (shipClockReloading.getElapsedTime().asSeconds() > reloadingTime)
         {
             shoot(direction);
@@ -50,8 +50,8 @@ void Enemy::updateEntity()
     }
     else
     {
-        rotateAngle = rand() % (int)rotateAngle + 1;
-        speed = rand() % (int)speed + 1;
+        setRotateAngle(rand() % (int)150 + 100);
+        setSpeed(rand() % (int)250 + 200);
         shipClockMove.restart();
     }
     checkPosition();

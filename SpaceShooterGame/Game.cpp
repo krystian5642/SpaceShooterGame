@@ -168,6 +168,7 @@ void GameWindow::initMiniMap()
 
 GameWindow::GameWindow()
 {
+    updateDt();
     initWindow();
     initSounds();
     initBackground();
@@ -187,6 +188,7 @@ GameWindow::~GameWindow()
 
 void GameWindow::update()
 {
+    updateDt();
     updateBullets();
     updateShips();
     updateView();
@@ -246,6 +248,11 @@ bool GameWindow::startGame()
     return false;
 }
 
+void GameWindow::updateDt()
+{
+    dt = gameClock.restart().asSeconds();
+}
+
 void GameWindow::updateBullets()
 {
     if (player)
@@ -270,7 +277,7 @@ void GameWindow::updateBullets()
 
     for (auto bullet = playerBullets.begin(); bullet != playerBullets.end(); bullet++)
     {
-        bullet->updateBullet();
+        bullet->updateBullet(dt);
         if (bullet->isEndBulletLife())
         {
             playerBullets.erase(bullet);
@@ -280,7 +287,7 @@ void GameWindow::updateBullets()
 
     for (auto bullet = enemyBullets.begin(); bullet != enemyBullets.end(); bullet++)
     {
-        bullet->updateBullet();
+        bullet->updateBullet(dt);
         if (bullet->isEndBulletLife())
         {
             enemyBullets.erase(bullet);
@@ -293,13 +300,13 @@ void GameWindow::updateShips()
 {
     if (player)
     {
-        player->updateEntity();
+        player->updateEntity(dt);
         player->setSize(sf::Vector2f(player->getTexture()->getSize().x * player->getScale().x, player->getTexture()->getSize().y * player->getScale().y));
     }
     for (auto& ship : enemyShips)
     {
         ship.setSize(sf::Vector2f(ship.getTexture()->getSize().x * ship.getScale().x, ship.getTexture()->getSize().y * ship.getScale().y));
-        ship.updateEntity();
+        ship.updateEntity(dt);
     }
 }
 
@@ -360,7 +367,7 @@ void GameWindow::updateExplosion()
 {
     for (auto explode = explosions.begin(); explode != explosions.end(); explode++)
     {
-        explode->updateEntity();
+        explode->updateEntity(dt);
         if (explode->getTextureIndex() == explode->getTextureNumber())
         {
             explosions.erase(explode);

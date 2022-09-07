@@ -20,32 +20,32 @@ Bullet::~Bullet()
 {
 }
 
-const float& Bullet::getMaxLifeTime() const
+float Bullet::getMaxLifeTime() const
 {
     return maxLifeTime;
 }
 
-void Bullet::setMaxLifeTime(const float& newMaxLifeTime)
+void Bullet::setMaxLifeTime(float newMaxLifeTime)
 {
     if (newMaxLifeTime <= 0)
     {
         throw std::logic_error("maxLifeTime cannot be less or equal zero");
     }
-    this->maxLifeTime = newMaxLifeTime;
+    maxLifeTime = newMaxLifeTime;
 }
 
-const float& Bullet::getSpeed() const
+float Bullet::getSpeed() const
 {
     return speed;
 }
 
-void Bullet::setSpeed(const float& newSpeed)
+void Bullet::setSpeed(float newSpeed)
 {
     if (newSpeed <= 0)
     {
         throw std::logic_error("speed cannot be less or equal zero");
     }
-    this->speed = newSpeed;
+    speed = newSpeed;
 }
 
 const sf::Vector2f& Bullet::getDirection() const
@@ -55,33 +55,21 @@ const sf::Vector2f& Bullet::getDirection() const
 
 void Bullet::setDirection(const sf::Vector2f& newDirection)
 {
-    this->direction = newDirection;
+    direction = newDirection;
 }
 
-void Bullet::updateBullet()
+void Bullet::updateBullet(long double dt)
 {
-    move(sf::Vector2f(direction.x * speed, direction.y * speed));
+    move(sf::Vector2f(direction.x * speed * dt, direction.y * speed *dt));
 }
 
 bool Bullet::isEndBulletLife()
 {
-    if (lifeTime.getElapsedTime().asSeconds() >= maxLifeTime)
-    {
-        return true;
-    }
-    if (getPosition().x < getRadius() / 2)
-    {
-        return true;
-    }
-    if (getPosition().x > xBackgroundSize - getRadius() / 2)
-    {
-        return true;
-    }
-    if (getPosition().y < getRadius() / 2)
-    {
-        return true;
-    }
-    if (getPosition().y > yBackgroundSize - getRadius() / 2)
+    if (lifeTime.getElapsedTime().asSeconds() >= maxLifeTime
+        || getPosition().x < getRadius() / 2
+        || getPosition().x > xBackgroundSize - getRadius() / 2
+        || getPosition().y < getRadius() / 2
+        || getPosition().y > yBackgroundSize - getRadius() / 2)
     {
         return true;
     }

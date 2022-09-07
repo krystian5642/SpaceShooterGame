@@ -37,6 +37,8 @@ private:
 	std::vector<Explosion> explosions;
 	sf::View mainView;
 	sf::View miniMap;
+	sf::Clock gameClock;
+	long double dt;
 
 	//fonts
 	sf::Font arial;
@@ -66,6 +68,7 @@ private:
 	void render();
 
 	//update functions
+	void updateDt();
 	void updateBullets();
 	void updateShips();
 	void updateView();
